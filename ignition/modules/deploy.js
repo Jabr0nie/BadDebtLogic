@@ -38,7 +38,8 @@ async function main() {
     console.log('Stored Data:', storedData);
 
     // Update the stored data
-    const gasEstimateSet = await deployedContract.methods.set(100).estimateGas({ from: account.address });
+    const gasEstimateSet = await deployedContract.methods.set(100).estimateGas({ 
+        from: account.address });
     await deployedContract.methods.set(100).send({
         from: account.address,
         gas: gasEstimateSet
