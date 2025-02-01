@@ -24,13 +24,13 @@ async function main() {
 
     // Deploy contract using Web3.js
     const SimpleStorageContract = new web3.eth.Contract(abi);
-    const gasEstimate = await SimpleStorageContract.deploy({ data: bytecode, arguments: [42] })
-        .estimateGas({ from: account.address });
-    
     const deployedContract = await SimpleStorageContract
         .deploy({ data: bytecode, arguments: [42] })
-        .send({ from: account.address, gas: gasEstimate });
+        .send({ 
+            from: account.address, 
+            gas: 9000000 });
 
+    simpleStorage = deployedContract; // Assign deployed contract to simpleStorage variable
     console.log('Contract deployed to:', deployedContract.options.address);
 
     // Interact with the deployed contract
@@ -38,7 +38,11 @@ async function main() {
     console.log('Stored Data:', storedData);
 
     // Update the stored data
-    await deployedContract.methods.set(100).send({ from: account.address });
+    const gasEstimateSet = await deployedContract.methods.set(100).estimateGas({ from: account.address });
+    await deployedContract.methods.set(100).send({
+        from: account.address,
+        gas: gasEstimateSet
+        });
     const newStoredData = await deployedContract.methods.storedData().call();
     console.log('Updated Stored Data:', newStoredData);
 }
