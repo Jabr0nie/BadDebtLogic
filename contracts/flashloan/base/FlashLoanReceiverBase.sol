@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
 
-import {IFlashLoanSimpleReceiver} from '../interfaces/IFlashLoanSimpleReceiver.sol';
+import {IFlashLoanReceiver} from '../interfaces/IFlashLoanReceiver.sol';
 import {IPoolAddressesProvider} from '../../interfaces/IPoolAddressesProvider.sol';
 import {IPool} from '../../interfaces/IPool.sol';
 
 /**
- * @title FlashLoanSimpleReceiverBase
+ * @title FlashLoanReceiverBase
  * @author Aave
  * @notice Base contract to develop a flashloan-receiver contract.
  */
-abstract contract FlashLoanSimpleReceiverBase is IFlashLoanSimpleReceiver {
+abstract contract FlashLoanReceiverBase is IFlashLoanReceiver {
   IPoolAddressesProvider public immutable override ADDRESSES_PROVIDER;
   IPool public immutable override POOL;
 

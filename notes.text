@@ -1,0 +1,1 @@
+npx hardhat compile --files contracts/MyContract.sol

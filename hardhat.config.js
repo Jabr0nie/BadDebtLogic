@@ -1,16 +1,23 @@
 require("@nomicfoundation/hardhat-toolbox");
-require('dotenv').config();
+require("hardhat-preprocessor");
+require("dotenv").config();
+const fs = require('fs')
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: {
-    version: "0.8.28",
-    settings: {
-      optimizer: {
-        enabled: true,
-        runs: 1000,
-      },
-    },
+    compilers: [
+      { 
+          version: '0.8.10',
+          settings: {
+            // viaIR: true,
+            optimizer: {
+              enabled: true,
+              runs: 10000,
+            },
+          }
+        }
+    ]
   },
   networks: {
     OPSepolia: {
