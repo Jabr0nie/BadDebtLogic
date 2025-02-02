@@ -18,7 +18,7 @@ web3.eth.accounts.wallet.add(account);
 
 async function main() {
     // Get contract ABI and Bytecode from Hardhat artifacts
-    const FlashLoanArtifact = require('../../artifacts/contracts/mocks/tests/FlashloanRepayExample.sol/FlashloanAttacker.json');
+    const FlashLoanArtifact = require('../../artifacts/contracts/mocks/tests/FlashloanRepayExample.sol/FlashloanRepayExample.json');
     const abi = FlashLoanArtifact.abi;
     const bytecode = FlashLoanArtifact.bytecode;
 
